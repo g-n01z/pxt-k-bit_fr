@@ -9,7 +9,9 @@
     },
     "files": [
         "README.md",
-        "main.ts"
+        "main.ts",
+        "_locales/fr/pxt-k-bit-jsdoc-strings.json",
+        "_locales/fr/pxt-k-bit-strings.json"
     ],
     "testFiles": [
         "test.ts"

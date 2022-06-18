@@ -7,30 +7,43 @@
  * use for RGB-LED
  */
 enum COLOR {
+    //% block=red
     red,
+    //% block=green
     green,
+    //% block=blue
     blue,
+    //% block=white
     white,
+    //% block=black
     black
 }
 /**
  * use for control motor
  */
 enum DIR {
+    //% block=RunForward
     RunForward = 0,
+    //% block=RunBack
     RunBack = 1,
+    //% block=TurnLeft
     TurnLeft = 2,
+    //% block=TurnRight
     TurnRight = 3
 }
 /**
  * use for motor and infrared obstacle sensor
  */
 enum MotorObs {
+    //% block=LeftSide
     LeftSide = 0,
+    //% block=RightSide
     RightSide = 1
 }
 enum MotorDir {
+    //% block=Forward
     Forward = 0,
+    //% block=Back
     Back = 1
 }
 //% color="#ff6800" icon="\uf1b9" weight=15
@@ -207,10 +220,10 @@ namespace k_Bit {
         }
     }
     /////////////////////////////////////////////////////
+    let L_brightness = 4095;  //control the rgb-led brightness
     /**
      * set rgb-led brightness
      */
-    let L_brightness = 4095;  //control the rgb-led brightness
     //% block="LED brightness $br"
     //% br.min=0 br.max=255
     //% group="RGB-led" weight=79
@@ -296,6 +309,9 @@ namespace k_Bit {
      */
     pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
     pins.setPull(DigitalPin.P11, PinPullMode.PullNone);
+    /**
+     * Get the value of the infrared obstacle sensor
+     */
     //% block="$LR obstacle sensor "
     //% group="Sensor" weight=69
     export function obstacle(LR: MotorObs): number {
@@ -308,13 +324,15 @@ namespace k_Bit {
         }
         return val;
     }
+
+    pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
+    pins.setPull(DigitalPin.P13, PinPullMode.PullNone);
     /**
+     * Line Tracking
      * return 0b01 or 0b10
      * 0b01 is the sensor on the left
      * 0b10 is the sensor on the right
      */
-    pins.setPull(DigitalPin.P12, PinPullMode.PullNone);
-    pins.setPull(DigitalPin.P13, PinPullMode.PullNone);
     //% block="Line Tracking"
     //% group="Sensor" weight=68
     export function LineTracking(): number {
@@ -328,6 +346,10 @@ namespace k_Bit {
     const ECHO_PIN = DigitalPin.P15;
     pins.setPull(TRIG_PIN, PinPullMode.PullNone);
     let lastTime = 0;
+    
+    /**
+     * Get the value of the ultrasonic sensor
+     */
     //% block="Ultrasonic"
     //% group="Sensor" weight=67
     export function ultra(): number {
@@ -354,7 +376,7 @@ namespace k_Bit {
         return Math.round(ret / 40);  
     }
     /**
-     * photoresistance sensor
+     * Get the value of the photoresistance sensor
      */
     //% block="photoresistor "
     //% group="Sensor" weight=66
